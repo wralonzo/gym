@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\ClaseModel;
+use App\Models\ClientAsistenciaModel;
 use App\Models\ClientModel;
 
 class Client extends BaseController
@@ -47,5 +49,56 @@ class Client extends BaseController
 				. view('layer/admin/cliente/registrar')
 				. view('layer/shared/footer');
 		}
+	}
+
+	public function asistencia()
+	{
+		helper(['form']);
+		$userModel = new ClaseModel();
+		$clientModel = new ClientModel();
+		$asistencia = new ClientAsistenciaModel();
+		if (!$this->request->getPost()) {
+			$dataClient = $userModel->findAll();
+			$data['data'] = $dataClient;
+			return view('layer/shared/head') .
+				view('layer/admin/cliente/portal', $data)
+				. view('layer/shared/footer');
+		}
+
+		$client = $clientModel->where('estado', 1)->where('id_cliente', $this->request->getVar('id_cliente'))->first();
+		if (!$client) {
+			return redirect()->to('/client/asistencia');
+		}
+		$data = [
+			'id_cliente'     => $this->request->getVar('id_cliente'),
+			'id_clase'     => $this->request->getVar('id_clase'),
+		];
+		$asistencia->save($data);
+		return redirect()->to('/client/asistencia');
+	}
+
+	public function editar($id_cliente)
+	{
+		$userModel = new ClientModel();
+
+		helper(['form']);
+		$dataClient = $userModel->where('estado', 1)->where('id_cliente', $id_cliente)->first();
+		if (!$this->request->getPost()) {
+			$data['data'] = $dataClient;
+			return view('layer/shared/head') .
+				view('layer/admin/cliente/editar', $data)
+				. view('layer/shared/footer');
+		}
+		$dataUpdate = [
+			'nombres'     => $this->request->getVar('nombres'),
+			'apellidos'     => $this->request->getVar('apellidos'),
+			'correo'     => $this->request->getVar('correo'),
+			'direccion'     => $this->request->getVar('direccion'),
+			'telefono' => $this->request->getVar('telefono'),
+		];
+		$userModel->where('id_cliente', $id_cliente)
+			->set($dataUpdate)
+			->update();
+		return redirect()->to('/client');
 	}
 }

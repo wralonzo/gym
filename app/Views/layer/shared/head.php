@@ -24,7 +24,12 @@
             <i class="bi bi-grid"></i>
             <i class='bx bx-sun' id="darkLight"></i>
             <i class='bx bx-bell'></i>
-            <img src="<?php echo base_url() ?>images/profile.jpg" alt="" class="profile" />
+            <a href="<?php echo base_url() ?>login/logout" class="nav_link">
+                <span class="navlink_icon">
+                    <i class="bx bxs-magic-wand"></i>
+                </span>
+                <span class="navlink">Cerrar sesion</span>
+            </a>
         </div>
     </nav>
     <!-- sidebar -->
@@ -61,7 +66,7 @@
                 <!-- End -->
 
                 <li class="item">
-                    <a href="<?php echo base_url() ?>client" class="nav_link">
+                    <a href="<?php echo base_url() ?>clase" class="nav_link">
                         <span class="navlink_icon">
                             <i class="bx bx-loader-circle"></i>
                         </span>
@@ -77,7 +82,7 @@
                     </a>
                 </li>
                 <li class="item">
-                    <a href="<?php echo base_url() ?>client" class="nav_link">
+                <a href="<?php echo base_url() ?>user/list" class="nav_link">
                         <span class="navlink_icon">
                             <i class="bx bx-cloud-upload"></i>
                         </span>

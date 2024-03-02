@@ -75,4 +75,19 @@ class Login extends BaseController
 			.view('layer/shared/footer');
 		}
 	}
+	public function logout()
+	{
+		$session = session();
+		$session->destroy();
+		return redirect()->route('/');
+	}
+
+	public function display(){
+		$userModel = new LoginModel();
+		$dataClient = $userModel->where('estado', 1)->findAll();
+		$data['data'] = $dataClient;
+		return view('layer/shared/head') .
+			view('layer/admin/user/index', $data)
+			. view('layer/shared/footer');
+	}
 }
