@@ -9,6 +9,7 @@
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <title>Gimnacio GT</title>
     <link href="<?php echo base_url() . 'assets/css/style-nav.css' ?>" rel="stylesheet" />
+    <link href="<?php echo base_url() . 'assets/css/stylewinds.css' ?>" rel="stylesheet" />
 </head>
 
 <body>
@@ -50,7 +51,7 @@
                 <!-- duplicate these li tag if you want to add or remove navlink only -->
                 <!-- Start -->
                 <li class="item">
-                    <a href="#" class="nav_link">
+                    <a href="<?php echo base_url() ?>client" class="nav_link">
                         <span class="navlink_icon">
                             <i class="bx bxs-magic-wand"></i>
                         </span>
@@ -60,7 +61,7 @@
                 <!-- End -->
 
                 <li class="item">
-                    <a href="#" class="nav_link">
+                    <a href="<?php echo base_url() ?>client" class="nav_link">
                         <span class="navlink_icon">
                             <i class="bx bx-loader-circle"></i>
                         </span>
@@ -76,7 +77,7 @@
                     </a>
                 </li>
                 <li class="item">
-                    <a href="#" class="nav_link">
+                    <a href="<?php echo base_url() ?>client" class="nav_link">
                         <span class="navlink_icon">
                             <i class="bx bx-cloud-upload"></i>
                         </span>
