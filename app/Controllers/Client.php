@@ -55,10 +55,11 @@ class Client extends BaseController
 	public function asistencia()
 	{
 		helper(['form']);
-		$userModel = new HorarioModel();
+		
 		$clientModel = new ClientModel();
 		$asistencia = new ClientAsistenciaModel();
 		if (!$this->request->getPost()) {
+			$userModel = new HorarioModel();
 			$dataClient = $userModel->select('clase.nombre as nombre, horario.id_horario, horario.descripcion')->join('clase', 'clase.id_clase = horario.id_clase')->findAll();
 			$data['data'] = $dataClient;
 			return view('layer/shared/head') .
