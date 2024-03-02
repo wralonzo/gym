@@ -11,7 +11,7 @@ class ClientAsistenciaModel extends Model
     protected $allowedFields = [
         'id_asistencia',
         'id_cliente',
-        'id_clase',
+        'id_horario',
         'created_at',
     ];
 }

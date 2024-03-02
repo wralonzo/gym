@@ -1,21 +1,22 @@
-<h1 class="w-full text-sm font-large text-left rtl:text-right text-black-500 dark:text-black-400 text-center" style="font-size: 40px;">Listado de Usuarios</h1>
-<a href="<?= base_url() ?>login/registrar" class="text-white bg-green-700 "><span class="px-6 py-4 font-medium text-white-900 whitespace-nowrap dark:text-white">Agregar</span></a>
+<h1 class="w-full text-sm font-large text-left rtl:text-right text-black-500 dark:text-black-400 text-center" style="font-size: 40px;">Listado de horarios</h1>
 <br>
+<a href="<?= base_url() ?>horario/registrar" class="text-white bg-green-700 "><span class="px-6 py-4 font-medium text-white-900 whitespace-nowrap dark:text-white">Agregar</span></a>
+<br><br>
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="px-6 py-3">
-                    Nombres
+                    Descripcion
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Apellidos
+                    Hora Inicio
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Correo/usuario
+                    Hora fin
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Fecha de creacion
+                    Clase
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Acciones
@@ -27,21 +28,22 @@
                 foreach ($data as $row) :
             ?>
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <?= $row['nombres'] ?>
+                       
+                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <?= $row['descripcion'] ?>
+                        </td>
+                        <th scope="row" class="px-6 py-4 ">
+                            <?= $row['hora_inicio'] ?>
+                        </th>
+                        <th scope="row" class="px-6 ">
+                            <?= $row['hora_fin'] ?>
+                        </th>
+                        <th scope="row" class="px-6 py-4 ">
+                            <?= $row['nombre'] ?>
                         </th>
                         <td class="px-6 py-4">
-                        <?= $row['apellidos'] ?>
-                        </td>
-                        <td class="px-6 py-4">
-                        <?= $row['usuario'] ?>
-                        </td>
-                        <td class="px-6 py-4">
-                            <?= $row['created_at'] ?>
-                        </td>
-                        <td class="px-6 py-4">
-                            <a href="<?= base_url()?>user/editar/<?= $row['id'] ?>" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editar</a>
-                            <a href="<?= base_url()?>user/borrar/<?= $row['id'] ?>" class="px-6 py-4 font-medium text-red-600 dark:text-blue-500 hover:underline">Borrar</a>
+                            <a href="<?= base_url() ?>clase/editar/<?= $row['id_horario'] ?>" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editar</a>
+                            <a href="<?= base_url() ?>clase/borrar/<?= $row['id_horario'] ?>" class="px-6 py-4 font-medium text-red-600 dark:text-blue-500 hover:underline">Borrar</a>
                         </td>
                     </tr>
             <?php endforeach;

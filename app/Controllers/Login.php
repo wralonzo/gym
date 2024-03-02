@@ -20,7 +20,7 @@ class Login extends BaseController
 		$email = $this->request->getVar('usuario');
 		$password = $this->request->getVar('clave');
 
-		$data = $userModel->where('usuario', $email)->first();
+		$data = $userModel->where('usuario', $email)->orderBy('id', 'desc')->first();
 
 		if ($data) {
 			$pass = $data['clave'];
@@ -67,12 +67,12 @@ class Login extends BaseController
 				'clave' => password_hash($this->request->getVar('clave'), PASSWORD_DEFAULT)
 			];
 			$userModel->save($data);
-			return redirect()->to('/');
+			return redirect()->to('/user/list');
 		} else {
 			$data['validation'] = $this->validator;
 			return view('layer/shared/head')
-			.view('layer/login/registrar')
-			.view('layer/shared/footer');
+				. view('layer/login/registrar')
+				. view('layer/shared/footer');
 		}
 	}
 	public function logout()
@@ -82,12 +82,44 @@ class Login extends BaseController
 		return redirect()->route('/');
 	}
 
-	public function display(){
+	public function display()
+	{
 		$userModel = new LoginModel();
-		$dataClient = $userModel->where('estado', 1)->findAll();
+		$dataClient = $userModel->where('estado', 1)->orderBy('id', 'desc')->findAll();
 		$data['data'] = $dataClient;
 		return view('layer/shared/head') .
 			view('layer/admin/user/index', $data)
 			. view('layer/shared/footer');
+	}
+
+	public function editar($id)
+	{
+		helper(['form']);
+		$userModel = new LoginModel();
+		$dataClient = $userModel->where('estado', 1)->where('id', $id)->first();
+		if (!$this->request->getPost()) {
+			$data['data'] = $dataClient;
+			return view('layer/shared/head') .
+				view('layer/admin/user/editar', $data)
+				. view('layer/shared/footer');
+		}
+		$dataUpdate = [
+			'nombres'     => $this->request->getVar('nombres'),
+			'apellidos'     => $this->request->getVar('apellidos'),
+			'usuario'     => $this->request->getVar('usuario'),
+			'type_user'     => $this->request->getVar('type_user'),
+		];
+		$userModel->where('id', $id)
+			->set($dataUpdate)
+			->update();
+		return redirect()->to('/user/list');
+	}
+
+	public function borrar($id_cliente)
+	{
+		$userModel = new LoginModel();
+		$userModel->where('id', $id_cliente)
+			->delete();
+		return redirect()->to('/user/list');
 	}
 }

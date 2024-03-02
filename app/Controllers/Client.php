@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\ClaseModel;
 use App\Models\ClientAsistenciaModel;
 use App\Models\ClientModel;
+use App\Models\HorarioModel;
 
 class Client extends BaseController
 {
@@ -14,7 +15,7 @@ class Client extends BaseController
 	{
 		$userModel = new ClientModel();
 
-		$dataClient = $userModel->where('estado', 1)->findAll();
+		$dataClient = $userModel->where('estado', 1)->orderBy('id_cliente', 'desc')->findAll();
 		$data['data'] = $dataClient;
 		return view('layer/shared/head') .
 			view('layer/admin/cliente/index', $data)
@@ -54,11 +55,11 @@ class Client extends BaseController
 	public function asistencia()
 	{
 		helper(['form']);
-		$userModel = new ClaseModel();
+		$userModel = new HorarioModel();
 		$clientModel = new ClientModel();
 		$asistencia = new ClientAsistenciaModel();
 		if (!$this->request->getPost()) {
-			$dataClient = $userModel->findAll();
+			$dataClient = $userModel->select('clase.nombre as nombre, horario.id_horario, horario.descripcion')->join('clase', 'clase.id_clase = horario.id_clase')->findAll();
 			$data['data'] = $dataClient;
 			return view('layer/shared/head') .
 				view('layer/admin/cliente/portal', $data)
@@ -71,7 +72,7 @@ class Client extends BaseController
 		}
 		$data = [
 			'id_cliente'     => $this->request->getVar('id_cliente'),
-			'id_clase'     => $this->request->getVar('id_clase'),
+			'id_horario'     => $this->request->getVar('id_horario'),
 		];
 		$asistencia->save($data);
 		return redirect()->to('/client/asistencia');

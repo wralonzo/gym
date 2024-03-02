@@ -74,7 +74,7 @@
                     </a>
                 </li>
                 <li class="item">
-                    <a href="#" class="nav_link">
+                    <a href="<?php echo base_url() ?>reservacion" class="nav_link">
                         <span class="navlink_icon">
                             <i class="bx bx-filter"></i>
                         </span>
@@ -82,7 +82,15 @@
                     </a>
                 </li>
                 <li class="item">
-                <a href="<?php echo base_url() ?>user/list" class="nav_link">
+                    <a href="<?php echo base_url() ?>horario" class="nav_link">
+                        <span class="navlink_icon">
+                            <i class="bx bx-filter"></i>
+                        </span>
+                        <span class="navlink">Horarios</span>
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="<?php echo base_url() ?>user/list" class="nav_link">
                         <span class="navlink_icon">
                             <i class="bx bx-cloud-upload"></i>
                         </span>
