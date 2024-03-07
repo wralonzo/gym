@@ -1,5 +1,4 @@
-<h1 class="w-full text-sm font-large text-left rtl:text-right text-black-500 dark:text-black-400 text-center" style="font-size: 40px;">Listado de clientes</h1>
-<a href="<?= base_url() ?>client/registrar" class="text-white bg-green-700 "><span class="px-6 py-4 font-medium text-white-900 whitespace-nowrap dark:text-white">Agregar</span></a>
+<h1 class="w-full text-sm font-large text-left rtl:text-right text-black-500 dark:text-black-400 text-center" style="font-size: 40px;">Cursos</h1>
 <br><br>
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg ">
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -12,16 +11,16 @@
                     Apellidos
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Direccion
+                    clase
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Correo
+                    Hora inicio
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Telefono
+                    Hora Fin
                 </th>
-                <th scope="col" class="px-6 py-3" align="center">
-                    Membresia
+                <th scope="col" class="px-6 py-3">
+                    Fecha inscripcion
                 </th>
                 <th scope="col" class="px-6 py-3" align="center">
                     Acciones
@@ -40,21 +39,19 @@
                             <?= $row['apellidos'] ?>
                         </td>
                         <td class="px-6 py-4">
-                            <?= $row['direccion'] ?>
+                            <?= $row['nombre'] ?>
                         </td>
                         <td class="px-6 py-4">
-                            <?= $row['correo'] ?>
+                            <?= $row['hora_inicio'] ?>
                         </td>
                         <td class="px-6 py-4">
-                            <?= $row['telefono'] ?>
+                            <?= $row['hora_fin'] ?>
                         </td>
                         <td class="px-6 py-4">
-                            <?= $row['descripcion'] . ': Monto' . $row['precio'] ?>
+                            <?= $row['created_at'] ?>
                         </td>
                         <td class="px-6 py-4">
-                            <a href="<?= base_url() ?>client/editar/<?= $row['id_cliente'] ?>" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editar</a>
-                            <a href="<?= base_url() ?>client/clases/<?= $row['id_cliente'] ?>" class="px-6 py-4 font-medium text-indigo-600 dark:text-blue-500 hover:underline">Ver cursos</a>
-                            <a href="<?= base_url() ?>client/borrar/<?= $row['id_cliente'] ?>" class="font-medium text-red-600 dark:text-blue-500 hover:underline">Borrar</a>
+                            <a href="<?= base_url() ?>client/asistenciaclase/<?= $row['id_horario'] . '/' . $idClient ?>" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Asistencias</a>
                         </td>
                     </tr>
             <?php endforeach;

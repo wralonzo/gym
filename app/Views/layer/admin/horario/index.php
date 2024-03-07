@@ -42,7 +42,7 @@
                             <?= $row['nombre'] ?>
                         </th>
                         <td class="px-6 py-4">
-                            <a href="<?= base_url() ?>clase/editar/<?= $row['id_horario'] ?>" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editar</a>
+                            <!-- <a href="<?= base_url() ?>clase/editar/<?= $row['id_horario'] ?>" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editar</a> -->
                             <a href="<?= base_url() ?>clase/borrar/<?= $row['id_horario'] ?>" class="px-6 py-4 font-medium text-red-600 dark:text-blue-500 hover:underline">Borrar</a>
                         </td>
                     </tr>

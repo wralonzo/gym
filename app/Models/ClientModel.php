@@ -16,6 +16,7 @@ class ClientModel extends Model
         'direccion',        
         'telefono',
         'estado',
-        'created_at'
+        'created_at',
+        'id_membresia',
     ];
 }

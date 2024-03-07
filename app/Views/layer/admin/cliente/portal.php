@@ -9,7 +9,7 @@
 		display: none;
 	}
 </style>
-<section class="container bg-gray-50 dark:bg-gray-900">
+<section class="container bg-gray-50 dark:bg-gray-900 child-form">
 	<div class="justify-center">
 		<div class="bg-white rounded-lg shadow dark:border dark:bg-gray-800 dark:border-gray-700">
 			<div class="p-6 md:space-y-2 sm:p-8">

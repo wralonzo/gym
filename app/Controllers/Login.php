@@ -6,11 +6,10 @@ use App\Models\LoginModel;
 
 class Login extends BaseController
 {
-	protected $helpers = ['form'];
+	protected $helpers = ['form', 'url'];
 
 	public function index()
 	{
-		helper('url');
 		if (!$this->request->is('post')) {
 			return view('layer/login/index');
 		}

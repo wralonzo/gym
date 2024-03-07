@@ -5,7 +5,7 @@ namespace App\Controllers;
 use App\Models\ClaseModel;
 use App\Models\ReservacionModel;
 use App\Models\HorarioModel;
-
+use Exception;
 
 class Reservacion extends BaseController
 {
@@ -76,9 +76,26 @@ class Reservacion extends BaseController
 
 	public function borrar($id_cliente)
 	{
-		$userModel = new ClaseModel();
-		$userModel->where('id_clase', $id_cliente)
+		try{
+			$userModel = new ReservacionModel();
+		$userModel->where('id_reservacion', $id_cliente)
 			->delete();
-		return redirect()->to('/clase');
+		return redirect()->to('/reservacion');
+		}catch(Exception){
+			return redirect()->to('/reservacion');
+		}
+	}
+
+	public function activar($id_cliente)
+	{
+		$userModel = new ReservacionModel();
+		
+		$dataUpdate = [
+			'estado'     => 1,
+		];
+		$userModel->where('id_reservacion', $id_cliente)
+			->set($dataUpdate)
+			->update();
+		return redirect()->to('/reservacion');
 	}
 }

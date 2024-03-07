@@ -1,7 +1,7 @@
-<section class="container bg-gray-50 dark:bg-gray-900">
+<section class="bg-gray-50 dark:bg-gray-900 child-form">
 	<div class="justify-center">
-		<div class="bg-white rounded-lg shadow dark:border dark:bg-gray-800 dark:border-gray-700">
-			<div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+		<div class="bg-white shadow dark:border dark:bg-gray-800 dark:border-gray-700">
+			<div class="p-6 space-y-4 md:space-y-6 ">
 				<h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
 					Crear usuario
 				</h1>

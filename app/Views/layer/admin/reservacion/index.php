@@ -24,7 +24,7 @@
                 <th scope="col" class="px-6 py-3">
                     Fecha
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="px-6 py-3" align="center">
                     Acciones
                 </th>
             </tr>
@@ -47,14 +47,15 @@
                             <?= $row['hora_fin'] ?>
                         </td>
                         <td class="px-6 py-4">
-                            <?= $row['estado'] == 1 ? 'Aceptado': 'En progreso' ?>
+                            <?= $row['estado'] == 1 ? 'Inscrito': 'Reservado' ?>
                         </td>
                         <td class="px-6 py-4">
                             <?= $row['created_at'] ?>
                         </td>
                         <td class="px-6 py-4">
-                            <a href="<?= base_url() ?>reservacion/editar/<?= $row['id'] ?>" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editar</a>
-                            <a href="<?= base_url() ?>clreservacionase/borrar/<?= $row['id'] ?>" class="px-6 py-4 font-medium text-red-600 dark:text-blue-500 hover:underline">Borrar</a>
+                            <!-- <a href="<?= base_url() ?>reservacion/editar/<?= $row['id'] ?>" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editar</a> -->
+                            <a href="<?= base_url() ?>reservacion/activar/<?= $row['id'] ?>" class="px-6 py-4 font-medium text-indigo-600 dark:text-blue-500 hover:underline">Aceptar</a>
+                            <a href="<?= base_url() ?>reservacion/borrar/<?= $row['id'] ?>" class="font-medium text-red-600 dark:text-blue-500 hover:underline">Borrar</a>
                         </td>
                     </tr>
             <?php endforeach;

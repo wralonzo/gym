@@ -19,7 +19,6 @@ class Horario extends BaseController
 
 	public function index()
 	{
-		$userModel = new HorarioModel();
 		$dataClient = $this->db->table("horario as hr")
 			->select('clas.nombre, hr.descripcion, hr.hora_inicio, hr.hora_fin, hr.id_horario',)
 			->join('clase as clas', 'clas.id_clase = hr.id_clase')
