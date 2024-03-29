@@ -6,13 +6,13 @@
     <table id="example" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-                <th scope="col" class="px-6 py-3"  width="200px">
+                <th scope="col" class="px-6 py-3" width="200px">
                     Nombre
                 </th>
-                <th scope="col" class="px-6 py-3"  width="200px">
+                <th scope="col" class="px-6 py-3" width="200px">
                     Descripcion
                 </th>
-                <th scope="col" class="px-6 py-3"  width="200px">
+                <th scope="col" class="px-6 py-3" width="200px">
                     Acciones
                 </th>
             </tr>
@@ -70,6 +70,14 @@
         language: {
             'search': {
                 'placeholder': '🔍 Buscar...'
+            },
+        },
+        style: {
+            th: {
+                'text-align': 'center'
+            },
+            td: {
+                'text-align': 'center'
             },
         }
     });

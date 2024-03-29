@@ -26,8 +26,10 @@
     <!-- navbar -->
     <nav class="navbar">
         <div class="logo_item">
+
             <i class="bx bx-menu" id="sidebarOpen"></i>
-            <img src="<?php echo base_url() ?>images/logo.png" alt=""></i>Gimnacio GT
+            <img src="<?php echo base_url() ?>images/logo.png" alt=""></i><a href="<?php echo base_url() ?>">Gimnacio GT
+            </a>
         </div>
 
         <div class="navbar_content">

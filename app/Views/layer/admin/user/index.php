@@ -5,19 +5,19 @@
     <table id="example" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="px-6 py-3" width="150px">
                     Nombres
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="px-6 py-3" width="150px">
                     Apellidos
                 </th>
-                <th scope="col" class="px-6 py-3">
-                    Correo/usuario
+                <th scope="col" class="px-6 py-3" width="150px">
+                    usuario
                 </th>
-                <th scope="col" class="px-6 py-3">
-                    Fecha de creacion
+                <th scope="col" class="" width="250px">
+                    Fecha 
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="px-6 py-3" width="150px">
                     Acciones
                 </th>
             </tr>
@@ -36,7 +36,7 @@
                         <td class="px-6 py-4">
                             <?= $row['usuario'] ?>
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="">
                             <?= $row['created_at'] ?>
                         </td>
                         <td class="px-6 py-4">
@@ -44,7 +44,7 @@
                                 <i class="bx bxs-edit"></i>
                             </a>
                             <?php if (session()->get('type_user') == 'admin') : ?>
-                                <a href="<?= base_url() ?>user/borrar/<?= $row['id'] ?>" class="px-6 py-4 font-medium text-red-600 dark:text-blue-500 hover:underline">
+                                <a href="<?= base_url() ?>user/borrar/<?= $row['id'] ?>" class="font-medium text-red-600 dark:text-blue-500 hover:underline">
                                     <i class="bx bxs-trash"></i>
                                 </a>
                             <?php endif ?>

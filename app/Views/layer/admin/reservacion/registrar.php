@@ -7,8 +7,20 @@
 				</h1>
 				<form class="space-y-4 md:space-y-12" action="<?php echo base_url(); ?>reservacion/registrar" method="post">
 					<div>
-						<label for="nombres" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Codigo cliente</label>
-						<input type="text" name="id_cliente" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Nombre" required="">
+						<label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Su clase a reservar</label>
+						<select name="id_cliente" id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+							<option selected>Seleccione un cliente</option>
+							<?php
+							if (count($dataClients) > 0) :
+								foreach ($dataClients as $row) :
+
+							?>
+									<option value="<?= $row['id_cliente'] ?>"><?= $row['nombres'] ?> - <?= $row['apellidos'] ?></option>
+							<?php
+								endforeach;
+							endif;
+							?>
+						</select>
 					</div>
 
 					<div>
@@ -18,7 +30,7 @@
 							<?php
 							if (count($data) > 0) :
 								foreach ($data as $row) :
-									
+
 							?>
 									<option value="<?= $row['id_horario'] ?>"><?= $row['nombre'] ?> - <?= $row['hora_inicio'] ?> A <?= $row['hora_fin'] ?></option>
 							<?php

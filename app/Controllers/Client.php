@@ -21,8 +21,9 @@ class Client extends BaseController
 	public function index()
 	{
 		$dataClient = $this->db->table("cliente as cli")
-		->join('membresia mem', 'mem.id_membresia = cli.id_membresia', 'left')
-		->get()->getResultArray();
+			->join('membresia mem', 'mem.id_membresia = cli.id_membresia', 'left')
+			->orderBy('cli.id_cliente', 'desc')
+			->get()->getResultArray();
 
 		$data['data'] = $dataClient;
 
@@ -36,7 +37,7 @@ class Client extends BaseController
 	public function registrar()
 	{
 		helper(['form']);
-		
+
 
 		if ($this->request->getPost()) {
 			$userModel = new ClientModel();
@@ -134,7 +135,7 @@ class Client extends BaseController
 				view('layer/admin/cliente/clases', $data)
 				. view('layer/shared/footer');
 		} catch (Exception $e) {
-			redirect()->to('/client');
+			return redirect()->to('/client');
 		}
 	}
 
@@ -156,7 +157,7 @@ class Client extends BaseController
 				view('layer/admin/cliente/asistencias', $data)
 				. view('layer/shared/footer');
 		} catch (Exception $e) {
-			redirect()->to('/client');
+			return redirect()->to('/client');
 		}
 	}
 
@@ -172,10 +173,22 @@ class Client extends BaseController
 				->where('as.id_cliente', $idCliente)
 				->get()->getResultArray();
 			$data['data'] = $dataClient;
-			return 
+			return
 				view('layer/admin/cliente/pdf', $data);
 		} catch (Exception $e) {
-			redirect()->to('/client');
+			return redirect()->to('/client');
+		}
+	}
+
+	public function borrar($idCliente)
+	{
+		try {
+			$clientModel = new ClientModel();
+			$clientModel->where('id_cliente', $idCliente)
+				->delete();
+			return redirect()->to('/client');
+		} catch (Exception $e) {
+			return redirect()->to('/client');
 		}
 	}
 }

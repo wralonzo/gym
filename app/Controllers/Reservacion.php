@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\ClaseModel;
+use App\Models\ClientModel;
 use App\Models\ReservacionModel;
 use App\Models\HorarioModel;
 use Exception;
@@ -20,6 +21,7 @@ class Reservacion extends BaseController
 		->join('cliente as cli', 'cli.id_cliente = reservacion.id_cliente')
 		->join('horario as hr', 'hr.id_horario = reservacion.id_horario')
 		->join('clase as cla', 'cla.id_clase = hr.id_clase')
+		->orderBy('reservacion.id_reservacion', 'desc')
 		->findAll();
 		$data['data'] = $dataClient;
 		return view('layer/shared/head') .
@@ -40,11 +42,14 @@ class Reservacion extends BaseController
 			$userModel->save($data);
 			return redirect()->to('/reservacion');
 		} else {
+			$clientMOdel = new ClientModel();
+			$dataClients = $clientMOdel->findAll();
 			$userModel = new HorarioModel();
 			$dataClient = $userModel->select('clase.nombre as nombre, horario.hora_fin, horario.hora_inicio, horario.id_horario, horario.descripcion')
 			->join('clase', 'clase.id_clase = horario.id_clase')
 			->findAll();
 			$data['data'] = $dataClient;
+			$data['dataClients'] = $dataClients;
 			$data['validation'] = $this->validator;
 			return view('layer/shared/head')
 				. view('layer/admin/reservacion/registrar', $data)
@@ -52,26 +57,33 @@ class Reservacion extends BaseController
 		}
 	}
 
-	public function editar($id_cliente)
+	public function editar($idReservacion)
 	{
-		$userModel = new ClaseModel();
-
+		$reservacionModel = new ReservacionModel();
 		helper(['form']);
-		$dataClient = $userModel->where('id_clase', $id_cliente)->first();
+		$dataReservacion = $reservacionModel->where('id_reservacion', $idReservacion)->first();
 		if (!$this->request->getPost()) {
-			$data['data'] = $dataClient;
+			$clientMOdel = new ClientModel();
+			$dataClients = $clientMOdel->findAll();
+			$horarioModel = new HorarioModel();
+			$dataHorario = $horarioModel->select('clase.nombre as nombre, horario.hora_fin, horario.hora_inicio, horario.id_horario')
+			->join('clase', 'clase.id_clase = horario.id_clase')
+			->findAll();
+			$data['dataClients'] = $dataClients;
+			$data['data'] = $dataReservacion;
+			$data['horarios'] = $dataHorario;
 			return view('layer/shared/head') .
-				view('layer/admin/clase/editar', $data)
+				view('layer/admin/reservacion/editar', $data)
 				. view('layer/shared/footer');
 		}
 		$dataUpdate = [
-			'nombre'     => $this->request->getVar('nombre'),
-			'descripcion'     => $this->request->getVar('descripcion'),
+			'id_cliente'     => $this->request->getVar('id_cliente'),
+			'id_horario'     => $this->request->getVar('id_horario'),
 		];
-		$userModel->where('id_clase', $id_cliente)
+		$reservacionModel->where('id_reservacion', $idReservacion)
 			->set($dataUpdate)
 			->update();
-		return redirect()->to('/clase');
+		return redirect()->to('/reservacion');
 	}
 
 	public function borrar($id_cliente)

@@ -42,11 +42,11 @@
                         <?= $row['nombre'] ?>
                     </td>
                     <td class="px-6">
-                        <a href="<?= base_url() ?>clase/editar/<?= $row['id_horario'] ?>" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                        <a href="<?= base_url() ?>horario/editar/<?= $row['id_horario'] ?>" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
                             <i class="bx bxs-edit"></i>
                         </a>
                         <?php if (session()->get('type_user') == 'admin') : ?>
-                            <a href="<?= base_url() ?>clase/borrar/<?= $row['id_horario'] ?>" class="font-medium text-red-600 dark:text-blue-500 hover:underline">
+                            <a href="<?= base_url() ?>horario/borrar/<?= $row['id_horario'] ?>" class="font-medium text-red-600 dark:text-blue-500 hover:underline">
                                 <i class="bx bxs-trash"></i>
                             </a>
                         <?php endif ?>
