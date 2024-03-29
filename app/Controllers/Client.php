@@ -150,9 +150,30 @@ class Client extends BaseController
 				->where('as.id_cliente', $idCliente)
 				->get()->getResultArray();
 			$data['data'] = $dataClient;
+			$data['idHorario'] = $idHorario;
+			$data['idCliente'] = $idCliente;
 			return view('layer/shared/head') .
 				view('layer/admin/cliente/asistencias', $data)
 				. view('layer/shared/footer');
+		} catch (Exception $e) {
+			redirect()->to('/client');
+		}
+	}
+
+	public function pdf($idHorario, $idCliente)
+	{
+		try {
+			$dataClient = $this->db->table("asistencia as as")
+				->select('as.created_at, hr.id_horario, hr.hora_inicio, hr.hora_fin, clas.nombre, cli.nombres, cli.apellidos')
+				->join('horario as hr', 'as.id_horario = hr.id_horario')
+				->join('clase as clas', 'clas.id_clase = hr.id_clase')
+				->join('cliente as cli', 'as.id_cliente = cli.id_cliente')
+				->where('as.id_horario', $idHorario)
+				->where('as.id_cliente', $idCliente)
+				->get()->getResultArray();
+			$data['data'] = $dataClient;
+			return 
+				view('layer/admin/cliente/pdf', $data);
 		} catch (Exception $e) {
 			redirect()->to('/client');
 		}

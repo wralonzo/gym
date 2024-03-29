@@ -30,17 +30,17 @@ class Login extends BaseController
 					'nombres' => $data['nombres'],
 					'apellidos' => $data['apellidos'],
 					'correo' => $data['usuario'],
-					'type_user' => 'vendor',
+					'type_user' => $data['type_user'],
 					'isLoggedIn' => TRUE
 				];
 				$session->set($ses_data);
 				return redirect()->route('/');
 			} else {
-				$session->setFlashdata('msg', 'Password is incorrect.');
+				$session->setFlashdata('msg', 'El usuario no existe.');
 				return redirect()->route('login');
 			}
 		} else {
-			$session->setFlashdata('msg', 'Email does not exist.');
+			$session->setFlashdata('msg', 'El usuario no existe.');
 			return redirect()->route('login');
 		}
 	}

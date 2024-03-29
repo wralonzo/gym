@@ -2,7 +2,7 @@
 <a href="<?= base_url() ?>client/registrar" class="text-white bg-green-700 "><span class="px-6 py-4 font-medium text-white-900 whitespace-nowrap dark:text-white">Agregar</span></a>
 <br><br>
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg ">
-    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+    <table id="example" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="px-6 py-3">
@@ -23,7 +23,7 @@
                 <th scope="col" class="px-6 py-3" align="center">
                     Membresia
                 </th>
-                <th scope="col" class="px-6 py-3" align="center">
+                <th scope="col" class="" align="center">
                     Acciones
                 </th>
             </tr>
@@ -33,9 +33,9 @@
                 foreach ($data as $row) :
             ?>
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             <?= $row['nombres'] ?>
-                        </th>
+                        </td>
                         <td class="px-6 py-4">
                             <?= $row['apellidos'] ?>
                         </td>
@@ -51,10 +51,24 @@
                         <td class="px-6 py-4">
                             <?= $row['descripcion'] . ': Monto' . $row['precio'] ?>
                         </td>
-                        <td class="px-6 py-4">
-                            <a href="<?= base_url() ?>client/editar/<?= $row['id_cliente'] ?>" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editar</a>
-                            <a href="<?= base_url() ?>client/clases/<?= $row['id_cliente'] ?>" class="px-6 py-4 font-medium text-indigo-600 dark:text-blue-500 hover:underline">Ver cursos</a>
-                            <a href="<?= base_url() ?>client/borrar/<?= $row['id_cliente'] ?>" class="font-medium text-red-600 dark:text-blue-500 hover:underline">Borrar</a>
+                        <td width="30%">
+                            <a href="<?= base_url() ?>client/editar/<?= $row['id_cliente'] ?>" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                <span class="">
+                                    <i class="bx bxs-edit"></i>
+                                </span>
+                            </a>
+                            <a title="Cursos" href="<?= base_url() ?>client/clases/<?= $row['id_cliente'] ?>" class="font-medium text-indigo-600 dark:text-blue-500 hover:underline">
+                                <span class="">
+                                    <i class="bx bxs-copy"></i>
+                                </span>
+                            </a>
+                            <?php if (session()->get('type_user') == 'admin') : ?>
+                            <a href="<?= base_url() ?>client/borrar/<?= $row['id_cliente'] ?>" class="font-medium text-red-600 dark:text-blue-500 hover:underline">
+                                <span class="">
+                                    <i class="bx bxs-trash"></i>
+                                </span>
+                            </a>
+                            <?php endif ?>
                         </td>
                     </tr>
             <?php endforeach;
@@ -74,11 +88,43 @@
             }
         }
     }
+
+    $("table#example").Grid({
+        pagination: {
+            enabled: true,
+            limit: 5,
+            summary: false
+        },
+        search: {
+            enabled: true
+        },
+        resizable: true,
+        language: {
+            'search': {
+                'placeholder': '🔍 Buscar...'
+            },
+        },
+        pagination: {
+            limit: 20,
+            summary: true
+        },
+        style: {
+            th: {
+                'text-align': 'center'
+            },
+            td: {
+                'text-align': 'center'
+            },
+        }
+    });
 </script>
 <style type="text/tailwindcss">
     @layer utilities {
       .content-auto {
         content-visibility: auto;
       }
+    }
+    #example{
+        overflow: hidden;
     }
   </style>

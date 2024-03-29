@@ -1,6 +1,11 @@
 <h1 class="w-full text-sm font-large text-left rtl:text-right text-black-500 dark:text-black-400 text-center" style="font-size: 40px;">Asistencias</h1>
-
-<br><br><div class="relative overflow-x-auto shadow-md sm:rounded-lg ">
+<a target="_blank" href="<?= base_url() ?>client/pdf/<?= $idHorario ?>/<?= $idCliente ?>" class="text-red">
+    <span class="px-6 py-4 font-medium text-red-600 whitespace-nowrap dark:text-white">
+        <i width="100px" class="bx bxs-printer"></i>
+    </span>
+</a>
+<br><br>
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg ">
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>

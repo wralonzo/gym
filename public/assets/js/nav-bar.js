@@ -25,6 +25,10 @@ sidebar.addEventListener("mouseleave", () => {
   }
 });
 
+window.addEventListener('load', function() {
+  sidebar.classList.add("close", "hoverable");
+});
+
 darkLight.addEventListener("click", () => {
   body.classList.toggle("dark");
   if (body.classList.contains("dark")) {

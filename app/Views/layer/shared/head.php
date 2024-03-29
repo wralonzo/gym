@@ -10,6 +10,16 @@
     <title>Gimnacio GT</title>
     <link href="<?php echo base_url() . 'assets/css/style-nav.css' ?>" rel="stylesheet" />
     <link href="<?php echo base_url() . 'assets/css/stylewinds.css' ?>" rel="stylesheet" />
+
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
+    <script src="<?php echo base_url(); ?>assets/js/jquery.js"></script>
+    <script src="https://unpkg.com/jquery/dist/jquery.min.js"></script>
+    <script src="https://unpkg.com/gridjs-jquery/dist/gridjs.production.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css" />
 </head>
 
 <body>

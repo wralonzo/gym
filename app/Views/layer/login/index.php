@@ -40,6 +40,9 @@
 					<img class="mx-auto h-20 w-30 w-auto" width="50%" height="50%" src="<?php echo base_url() ?>images/logo.png" alt="Your Company">
 				</div>
 				<div class="mt-1 sm:mx-auto sm:w-full sm:max-w-sm">
+					<?php if (session()->get('msg')) : ?>
+						<h5 style="color: white"><?= session()->get('msg'); ?></h5>
+					<?php endif ?>
 					<form class="space-y-6" action="<?php echo base_url(); ?>login/" method="POST">
 						<div>
 							<label for="email" class="block text-sm font-medium leading-6 text-white">Usuario</label>

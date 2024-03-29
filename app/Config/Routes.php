@@ -21,6 +21,7 @@ $routes->get('/client/editar/(:any)', 'Client::editar/$1',  ['filter' => 'authGu
 $routes->get('/client/borrar/(:any)', 'Client::borrar/$1',  ['filter' => 'authGuard']);
 $routes->post('/client/editar/(:any)', 'Client::editar/$1',  ['filter' => 'authGuard']);
 $routes->get('/client/clases/(:any)', 'Client::clases/$1',  ['filter' => 'authGuard']);
+$routes->get('/client/pdf/(:any)/(:any)', 'Client::pdf/$1/$2',  ['filter' => 'authGuard']);
 $routes->get('/client/asistenciaclase/(:any)/(:any)', 'Client::asistenciaclase/$1/$2',  ['filter' => 'authGuard']);
 
 $routes->get('/clase', 'Clase::index',  ['filter' => 'authGuard']);
