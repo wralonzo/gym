@@ -78,6 +78,16 @@
                 <!-- End -->
 
                 <li class="item">
+                    <a href="<?php echo base_url() ?>payment" class="nav_link">
+                        <span class="navlink_icon">
+                            <i class="bx bx-book-open"></i>
+                        </span>
+                        <span class="navlink">Pagos clientes</span>
+                    </a>
+                </li>
+
+
+                <li class="item">
                     <a href="<?php echo base_url() ?>clase" class="nav_link">
                         <span class="navlink_icon">
                             <i class="bx bx-book-open"></i>

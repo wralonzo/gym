@@ -48,11 +48,16 @@ $routes->get('/horario/editar/(:any)', 'Horario::editar/$1',  ['filter' => 'auth
 $routes->post('/horario/editar/(:any)', 'Horario::editar/$1',  ['filter' => 'authGuard']);
 $routes->get('/horario/borrar/(:any)', 'Horario::borrar/$1',  ['filter' => 'authGuard']);
 
-
 $routes->get('/membresia', 'Membresia::index',  ['filter' => 'authGuard']);
 $routes->match(['get', 'post'], '/membresia/registrar', 'Membresia::registrar', ['filter' => 'authGuard']);
 $routes->get('/membresia/editar/(:any)', 'Membresia::editar/$1',  ['filter' => 'authGuard']);
 $routes->post('/membresia/editar/(:any)', 'Membresia::editar/$1',  ['filter' => 'authGuard']);
 $routes->get('/membresia/borrar/(:any)', 'Membresia::borrar/$1',  ['filter' => 'authGuard']);
+
+$routes->get('/payment', 'Payment::index',  ['filter' => 'authGuard']);
+$routes->match(['get', 'post'], '/payment/registrar', 'Payment::registrar', ['filter' => 'authGuard']);
+$routes->get('/payment/editar/(:any)', 'Payment::editar/$1',  ['filter' => 'authGuard']);
+$routes->post('/payment/editar/(:any)', 'Payment::editar/$1',  ['filter' => 'authGuard']);
+$routes->get('/payment/borrar/(:any)', 'Payment::borrar/$1',  ['filter' => 'authGuard']);
 
 
