@@ -157,7 +157,7 @@
                         <span class="navlink_icon">
                             <i class="bx bx-user-pin"></i>
                         </span>
-                        <span class="navlink">Clases</span>
+                        <span class="navlink">Reservaciones</span>
                     </a>
                 </li>
             <?php endif; ?>
