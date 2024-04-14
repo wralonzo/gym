@@ -6,7 +6,7 @@
 </style>
 <section class="container bg-gray-50 dark:bg-gray-900 child-form">
 	<div class="justify-center">
-
+	<?php if(session()->get('type_user') != 'lead' ): ?>
 		<table cellspacing="30" align="center">
 			<tr>
 				<th>
@@ -94,5 +94,6 @@
 	</tr>
 
 	</table>
+	<?php endif; ?>
 	</div>
 </section>

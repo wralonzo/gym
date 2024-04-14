@@ -41,6 +41,7 @@ $routes->get('/reservacion/editar/(:any)', 'Reservacion::editar/$1',  ['filter' 
 $routes->post('/reservacion/editar/(:any)', 'Reservacion::editar/$1',  ['filter' => 'authGuard']);
 $routes->get('/reservacion/borrar/(:any)', 'Reservacion::borrar/$1',  ['filter' => 'authGuard']);
 $routes->get('/reservacion/activar/(:any)', 'Reservacion::activar/$1',  ['filter' => 'authGuard']);
+$routes->get('/reservacion/client/', 'Reservacion::client',  ['filter' => 'authGuard']);
 
 $routes->get('/horario', 'Horario::index',  ['filter' => 'authGuard']);
 $routes->match(['get', 'post'], '/horario/registrar', 'Horario::registrar', ['filter' => 'authGuard']);
@@ -59,5 +60,7 @@ $routes->match(['get', 'post'], '/payment/registrar', 'Payment::registrar', ['fi
 $routes->get('/payment/editar/(:any)', 'Payment::editar/$1',  ['filter' => 'authGuard']);
 $routes->post('/payment/editar/(:any)', 'Payment::editar/$1',  ['filter' => 'authGuard']);
 $routes->get('/payment/borrar/(:any)', 'Payment::borrar/$1',  ['filter' => 'authGuard']);
+$routes->get('/payment/client', 'Payment::client',  ['filter' => 'authGuard']);
+
 
 

@@ -15,6 +15,7 @@ class LoginModel extends Model
         'clave',
         'estado',
         'type_user',
+        'id_client',
         'created_at'
     ];
 }

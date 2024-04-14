@@ -1,6 +1,8 @@
 <h1 class="w-full text-sm font-large text-left rtl:text-right text-black-500 dark:text-black-400 text-center" style="font-size: 40px;">Listado de reservaciones</h1>
 <br>
+<?php if(session()->get('type_user') != 'lead' ): ?>
 <a href="<?= base_url() ?>reservacion/registrar" class="text-white bg-green-700 "><span class="px-6 py-4 font-medium text-white-900 whitespace-nowrap dark:text-white">Agregar</span></a>
+<?php endif; ?>
 <br><br>
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <table id="example" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -53,6 +55,7 @@
                             <?= $row['created_at'] ?>
                         </td>
                         <td class="px-6 py-4">
+                        <?php if (session()->get('type_user') != 'lead') : ?>
                             <a href="<?= base_url() ?>reservacion/editar/<?= $row['id'] ?>" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
                             <span class="">
                                     <i class="bx bxs-edit"></i>
@@ -63,6 +66,7 @@
                                     <i class="bx bxs-copy"></i>
                                 </span>
                             </a>
+                            <?php endif ?>
                             <?php if (session()->get('type_user') == 'admin') : ?>
                                 <a href="<?= base_url() ?>reservacion/borrar/<?= $row['id'] ?>" class="font-medium text-red-600 dark:text-blue-500 hover:underline">
                                 <span class="">

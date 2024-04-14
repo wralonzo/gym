@@ -29,6 +29,24 @@ class Reservacion extends BaseController
 			. view('layer/shared/footer');
 	}
 
+	public function client()
+	{
+		$userModel = new ReservacionModel();
+
+		$dataClient = $userModel
+		->select('reservacion.id_reservacion as id, cli.nombres, cli.apellidos, reservacion.created_at, reservacion.estado, hr.hora_fin, hr.hora_inicio, cla.nombre')
+		->join('cliente as cli', 'cli.id_cliente = reservacion.id_cliente')
+		->join('horario as hr', 'hr.id_horario = reservacion.id_horario')
+		->join('clase as cla', 'cla.id_clase = hr.id_clase')
+		->where('cli.id_cliente', session()->get('id_client'))
+		->orderBy('reservacion.id_reservacion', 'desc')
+		->findAll();
+		$data['data'] = $dataClient;
+		return view('layer/shared/head') .
+			view('layer/admin/reservacion/index', $data)
+			. view('layer/shared/footer');
+	}
+
 	public function registrar()
 	{
 		helper(['form']);

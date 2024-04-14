@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\ClientModel;
 use App\Models\LoginModel;
 
 class Login extends BaseController
@@ -31,6 +32,7 @@ class Login extends BaseController
 					'apellidos' => $data['apellidos'],
 					'correo' => $data['usuario'],
 					'type_user' => $data['type_user'],
+					'id_client' => $data['id_client'],
 					'isLoggedIn' => TRUE
 				];
 				$session->set($ses_data);
@@ -47,30 +49,27 @@ class Login extends BaseController
 
 	public function registrar()
 	{
-		helper(['form']);
-		$rules = [
-			'nombres'          => 'required|min_length[2]|max_length[50]',
-			'apellidos'          => 'required|min_length[2]|max_length[50]',
-			'usuario'          => 'required|min_length[2]|max_length[50]',
-			'clave'          => 'required|min_length[2]|max_length[50]',
-			'type_user'          => 'required|min_length[2]|max_length[50]',
-		];
 
-		if ($this->validate($rules)) {
+		if ($this->request->getPost()) {
 			$userModel = new LoginModel();
 			$data = [
 				'nombres'     => $this->request->getVar('nombres'),
 				'apellidos'     => $this->request->getVar('apellidos'),
 				'usuario'     => $this->request->getVar('usuario'),
 				'type_user'     => $this->request->getVar('type_user'),
+				'id_client'     => $this->request->getVar('id_client') != 0? $this->request->getVar('id_client') : null,
 				'clave' => password_hash($this->request->getVar('clave'), PASSWORD_DEFAULT)
 			];
 			$userModel->save($data);
 			return redirect()->to('/user/list');
 		} else {
+
+			$clientMOdel = new ClientModel();
+			$dataClients = $clientMOdel->findAll();
 			$data['validation'] = $this->validator;
+			$data['clients'] = $dataClients;
 			return view('layer/shared/head')
-				. view('layer/login/registrar')
+				. view('layer/login/registrar', $data)
 				. view('layer/shared/footer');
 		}
 	}
@@ -97,6 +96,10 @@ class Login extends BaseController
 		$userModel = new LoginModel();
 		$dataClient = $userModel->where('estado', 1)->where('id', $id)->first();
 		if (!$this->request->getPost()) {
+			$clientModel = new ClientModel();
+			$client = $clientModel->findAll();
+			$data['validation'] = $this->validator;
+			$data['clients'] = $client;
 			$data['data'] = $dataClient;
 			return view('layer/shared/head') .
 				view('layer/admin/user/editar', $data)

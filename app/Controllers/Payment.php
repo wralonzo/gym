@@ -31,6 +31,22 @@ class Payment extends BaseController
 			view('layer/admin/payment/index', $data)
 			. view('layer/shared/footer');
 	}
+	public function client()
+	{
+		$dataClient = $this->db->table("payment as py")
+			->select('py.id_payment, py.detail, py.amount, py.created_at, clas.nombre, hr.descripcion, hr.hora_inicio, hr.hora_fin, hr.id_horario, cli.nombres, cli.apellidos',)
+			->join('horario as hr', 'hr.id_horario = py.id_horario')
+			->join('clase as clas', 'clas.id_clase = hr.id_clase')
+			->join('cliente as cli', 'cli.id_cliente = py.id_client')
+			->where('cli.id_cliente', session()->get('id_client'))
+			->orderBy('py.id_payment', 'desc')
+			->get()->getResultArray();
+
+		$data['data'] = $dataClient;
+		return view('layer/shared/head') .
+			view('layer/admin/payment/index', $data)
+			. view('layer/shared/footer');
+	}
 
 	public function registrar()
 	{
@@ -44,8 +60,8 @@ class Payment extends BaseController
 			$dataClients = $clientMOdel->findAll();
 			$userModel = new HorarioModel();
 			$dataHorario = $userModel->select('clase.nombre as nombre, horario.hora_fin, horario.hora_inicio, horario.id_horario, horario.descripcion')
-			->join('clase', 'clase.id_clase = horario.id_clase')
-			->findAll();
+				->join('clase', 'clase.id_clase = horario.id_clase')
+				->findAll();
 			$data['data'] = $dataHorario;
 			$data['dataClients'] = $dataClients;
 			return view('layer/shared/head')
@@ -66,8 +82,8 @@ class Payment extends BaseController
 			$dataClients = $clientMOdel->findAll();
 			$userModel = new HorarioModel();
 			$dataHorario = $userModel->select('clase.nombre as nombre, horario.hora_fin, horario.hora_inicio, horario.id_horario, horario.descripcion')
-			->join('clase', 'clase.id_clase = horario.id_clase')
-			->findAll();
+				->join('clase', 'clase.id_clase = horario.id_clase')
+				->findAll();
 			$data['horarios'] = $dataHorario;
 			$data['dataClients'] = $dataClients;
 			return view('layer/shared/head') .

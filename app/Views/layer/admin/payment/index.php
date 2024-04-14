@@ -1,6 +1,8 @@
 <h1 class="w-full text-sm font-large text-left rtl:text-right text-black-500 dark:text-black-400 text-center" style="font-size: 40px;">Listado de Pagos de cliente</h1>
 <br>
-<a href="<?= base_url() ?>payment/registrar" class="text-white bg-green-700 "><span class="px-6 py-4 font-medium text-white-900 whitespace-nowrap dark:text-white">Agregar</span></a>
+<?php if (session()->get('type_user') != 'lead') : ?>
+    <a href="<?= base_url() ?>payment/registrar" class="text-white bg-green-700 "><span class="px-6 py-4 font-medium text-white-900 whitespace-nowrap dark:text-white">Agregar</span></a>
+<?php endif; ?>
 <br><br>
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <table id="example" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -47,9 +49,12 @@
                             <?= $row['created_at'] ?>
                         </td>
                         <td class="px-6 py-4">
-                            <a href="<?= base_url() ?>payment/editar/<?= $row['id_payment'] ?>" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                                <i class="bx bxs-edit"></i>
-                            </a>
+                            <?php if (session()->get('type_user') != 'lead') : ?>
+                                <a href="<?= base_url() ?>payment/editar/<?= $row['id_payment'] ?>" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                    <i class="bx bxs-edit"></i>
+                                </a>
+                            <?php endif ?>
+
                             <?php if (session()->get('type_user') == 'admin') : ?>
                                 <a href="<?= base_url() ?>payment/borrar/<?= $row['id_payment'] ?>" class="px-6 py-4 font-medium text-red-600 dark:text-blue-500 hover:underline">
                                     <i class="bx bxs-trash"></i>

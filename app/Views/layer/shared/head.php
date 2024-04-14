@@ -62,11 +62,12 @@
                 </li>
                 <!-- end -->
             </ul>
-
             <ul class="menu_items">
                 <div class="menu_title menu_editor"></div>
                 <!-- duplicate these li tag if you want to add or remove navlink only -->
                 <!-- Start -->
+            <?php if(session()->get('type_user') != 'lead' ): ?>
+
                 <li class="item">
                     <a href="<?php echo base_url() ?>client" class="nav_link">
                         <span class="navlink_icon">
@@ -127,6 +128,39 @@
                         <span class="navlink">Usuarios</span>
                     </a>
                 </li>
+            <?php endif; ?>
+            <?php if(session()->get('type_user') != 'lead' ): ?>
+                <li class="item">
+                    <a href="<?php echo base_url() ?>user/list" class="nav_link">
+                        <span class="navlink_icon">
+                            <i class="bx bx-user-pin"></i>
+                        </span>
+                        <span class="navlink">Usuarios</span>
+                    </a>
+                </li>
+            <?php endif; ?>
+
+            <?php if(session()->get('type_user') == 'lead' ): ?>
+                <li class="item">
+                    <a href="<?php echo base_url() ?>payment/client" class="nav_link">
+                        <span class="navlink_icon">
+                            <i class="bx bx-user-pin"></i>
+                        </span>
+                        <span class="navlink">Pagos</span>
+                    </a>
+                </li>
+            <?php endif; ?>
+
+            <?php if(session()->get('type_user') == 'lead' ): ?>
+                <li class="item">
+                    <a href="<?php echo base_url() ?>reservacion/client" class="nav_link">
+                        <span class="navlink_icon">
+                            <i class="bx bx-user-pin"></i>
+                        </span>
+                        <span class="navlink">Clases</span>
+                    </a>
+                </li>
+            <?php endif; ?>
 
                 <li class="item">
                     <a href="<?php echo base_url() ?>client/asistencia" class="nav_link">

@@ -24,11 +24,21 @@
 						<select name="type_user" id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
 							<?php
 							$selected = '';
+							$selected2 = '';
+							$selected3 = '';
 							if ($data['type_user'] == 'admin') {
 								$selected = 'selected';
-							} ?>
+							}
+							if ($data['type_user'] == 'vendor') {
+								$selected2 = 'selected';
+							}
+							if ($data['type_user'] == 'lead') {
+								$selected3 = 'selected';
+							}
+							 ?>
 							<option value="vendor" <?= $selected ?>>Instructor</option>
-							<option value="admin" <?= $selected ?>>Administrador</option>
+							<option value="admin" <?= $selected2 ?>>Administrador</option>
+							<option value="lead" <?= $selected3 ?>>Cliente</option>
 							<!-- <option value="lead">Invitado</option> -->
 						</select>
 					</div>
