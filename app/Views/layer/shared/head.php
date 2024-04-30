@@ -66,101 +66,93 @@
                 <div class="menu_title menu_editor"></div>
                 <!-- duplicate these li tag if you want to add or remove navlink only -->
                 <!-- Start -->
-            <?php if(session()->get('type_user') != 'lead' ): ?>
+                <?php if (session()->get('type_user') != 'lead') : ?>
 
-                <li class="item">
-                    <a href="<?php echo base_url() ?>client" class="nav_link">
-                        <span class="navlink_icon">
-                            <i class="bx bxs-user-circle"></i>
-                        </span>
-                        <span class="navlink">Clientes</span>
-                    </a>
-                </li>
-                <!-- End -->
+                    <li class="item">
+                        <a href="<?php echo base_url() ?>client" class="nav_link">
+                            <span class="navlink_icon">
+                                <i class="bx bxs-user-circle"></i>
+                            </span>
+                            <span class="navlink">Clientes</span>
+                        </a>
+                    </li>
+                    <!-- End -->
 
-                <li class="item">
-                    <a href="<?php echo base_url() ?>payment" class="nav_link">
-                        <span class="navlink_icon">
-                            <i class="bx bx-book-open"></i>
-                        </span>
-                        <span class="navlink">Pagos clientes</span>
-                    </a>
-                </li>
+                    <li class="item">
+                        <a href="<?php echo base_url() ?>payment" class="nav_link">
+                            <span class="navlink_icon">
+                                <i class='bx bx-cart-add'></i>
+                            </span>
+                            <span class="navlink">Pagos clientes</span>
+                        </a>
+                    </li>
 
 
-                <li class="item">
-                    <a href="<?php echo base_url() ?>clase" class="nav_link">
-                        <span class="navlink_icon">
-                            <i class="bx bx-book-open"></i>
-                        </span>
-                        <span class="navlink">Clases</span>
-                    </a>
-                </li>
-                <li class="item">
-                    <a href="<?php echo base_url() ?>reservacion" class="nav_link">
-                        <span class="navlink_icon">
-                            <i class="bx bx-list-ul"></i>
-                        </span>
-                        <span class="navlink">Reservaciones</span>
-                    </a>
-                </li>
-                <li class="item">
-                    <a href="<?php echo base_url() ?>horario" class="nav_link">
-                        <span class="navlink_icon">
-                            <i class="bx bx-tachometer"></i>
-                        </span>
-                        <span class="navlink">Horarios</span>
-                    </a>
-                </li>
-                <li class="item">
-                    <a href="<?php echo base_url() ?>membresia" class="nav_link">
-                        <span class="navlink_icon">
-                            <i class="bx bx-dollar"></i>
-                        </span>
-                        <span class="navlink">Membresias</span>
-                    </a>
-                </li>
-                <li class="item">
-                    <a href="<?php echo base_url() ?>user/list" class="nav_link">
-                        <span class="navlink_icon">
-                            <i class="bx bx-user-pin"></i>
-                        </span>
-                        <span class="navlink">Usuarios</span>
-                    </a>
-                </li>
-            <?php endif; ?>
-            <?php if(session()->get('type_user') != 'lead' ): ?>
-                <li class="item">
-                    <a href="<?php echo base_url() ?>user/list" class="nav_link">
-                        <span class="navlink_icon">
-                            <i class="bx bx-user-pin"></i>
-                        </span>
-                        <span class="navlink">Usuarios</span>
-                    </a>
-                </li>
-            <?php endif; ?>
+                    <li class="item">
+                        <a href="<?php echo base_url() ?>clase" class="nav_link">
+                            <span class="navlink_icon">
+                                <i class="bx bx-book-open"></i>
+                            </span>
+                            <span class="navlink">Clases</span>
+                        </a>
+                    </li>
+                    <li class="item">
+                        <a href="<?php echo base_url() ?>reservacion" class="nav_link">
+                            <span class="navlink_icon">
+                                <i class='bx bx-objects-horizontal-left'></i>
+                            </span>
+                            <span class="navlink">Reservaciones</span>
+                        </a>
+                    </li>
+                    <li class="item">
+                        <a href="<?php echo base_url() ?>horario" class="nav_link">
+                            <span class="navlink_icon">
+                                <i class="bx bx-tachometer"></i>
+                            </span>
+                            <span class="navlink">Horarios</span>
+                        </a>
+                    </li>
+                    <li class="item">
+                        <a href="<?php echo base_url() ?>membresia" class="nav_link">
+                            <span class="navlink_icon">
+                                <i class="bx bx-dollar"></i>
+                            </span>
+                            <span class="navlink">Membresias</span>
+                        </a>
+                    </li>
+                <?php endif; ?>
+                <?php if (session()->get('type_user') != 'lead') : ?>
+                    <li class="item">
+                        <a href="<?php echo base_url() ?>user/list" class="nav_link">
+                            <span class="navlink_icon">
+                                <i class="bx bx-user-pin"></i>
+                            </span>
+                            <span class="navlink">Usuarios</span>
+                        </a>
+                    </li>
+                <?php endif; ?>
 
-            <?php if(session()->get('type_user') == 'lead' ): ?>
-                <li class="item">
-                    <a href="<?php echo base_url() ?>payment/client" class="nav_link">
-                        <span class="navlink_icon">
-                            <i class="bx bx-user-pin"></i>
-                        </span>
-                        <span class="navlink">Pagos</span>
-                    </a>
-                </li>
-            <?php endif; ?>
+                <?php if (session()->get('type_user') == 'lead') : ?>
+                    <li class="item">
+                        <a href="<?php echo base_url() ?>payment/client" class="nav_link">
+                            <span class="navlink_icon">
+                                <i class="bx bx-user-pin"></i>
+                            </span>
+                            <span class="navlink">Pagos</span>
+                        </a>
+                    </li>
+                <?php endif; ?>
 
-            <?php if(session()->get('type_user') == 'lead' ): ?>
-                <li class="item">
-                    <a href="<?php echo base_url() ?>reservacion/client" class="nav_link">
-                        <span class="navlink_icon">
-                            <i class="bx bx-user-pin"></i>
-                        </span>
-                        <span class="navlink">Reservaciones</span>
-                    </a>
-                </li>
-            <?php endif; ?>
+                <?php if (session()->get('type_user') == 'lead') : ?>
+                    <li class="item">
+                        <a href="<?php echo base_url() ?>reservacion/client" class="nav_link">
+                            <span class="navlink_icon">
+                                <i class='bx bx-objects-horizontal-left'></i>
+                            </span>
+                            <span class="navlink">Reservaciones</span>
+                        </a>
+                    </li>
+                <?php endif; ?>
 
                 <li class="item">
                     <a href="<?php echo base_url() ?>client/asistencia" class="nav_link">
